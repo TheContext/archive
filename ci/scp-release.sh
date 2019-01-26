@@ -47,6 +47,7 @@ curl \
 
 echo ":: Uploading the GitHub release file to the remote storage..."
 
+ssh-keyscan -p "${STORAGE_PORT}" "${STORAGE_HOST}" >> ~/.ssh/known_hosts
 echo "${STORAGE_PRIVATE_KEY}" > "${STORAGE_PRIVATE_KEY_FILE}"
 scp -i "${STORAGE_PRIVATE_KEY_FILE}" -P "${STORAGE_PORT}" "${RELEASE_FILE_NAME}" ${STORAGE_USER}@${STORAGE_HOST}:${STORAGE_PATH}
 
