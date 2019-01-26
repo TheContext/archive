@@ -1,0 +1,7 @@
+language: shell
+
+deploy:
+  provider: script
+  script: ci/scp-release.sh
+  on:
+    tags: true
