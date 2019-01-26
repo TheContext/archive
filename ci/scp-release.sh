@@ -47,7 +47,8 @@ curl \
 
 echo ":: Uploading the GitHub release file to the remote storage..."
 
-echo "${STORAGE_PRIVATE_KEY}" > "${STORAGE_PRIVATE_KEY_FILE}"
+# OpenSSH needs key file with newlines, -e interpolates \n and renders newlines.
+echo -e "${STORAGE_PRIVATE_KEY}" > "${STORAGE_PRIVATE_KEY_FILE}"
 chmod u+rw,go= "${STORAGE_PRIVATE_KEY_FILE}"
 
 ssh-keyscan -p "${STORAGE_PORT}" "${STORAGE_HOST}" >> ~/.ssh/known_hosts
