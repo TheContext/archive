@@ -8,3 +8,6 @@ deploy:
   script: ci/scp-release.sh
   on:
     tags: true
+
+notifications:
+  email: false
