@@ -32,7 +32,6 @@ RELEASE_FILE_URL="$(echo "${RELEASE_FILE_JSON}" | jq --raw-output ".browser_down
 RELEASE_FILE_NAME="$(echo "${RELEASE_FILE_JSON}" | jq --raw-output ".name")"
 
 # Force remove every file we are going to create.
-
 trap 'rm -f "${RELEASE_FILE_NAME}" "${STORAGE_PRIVATE_KEY_FILE}"' EXIT
 
 echo ":: Downloading the GitHub release file..."
@@ -47,7 +46,7 @@ curl \
 
 echo ":: Uploading the GitHub release file to the remote storage..."
 
-# OpenSSH needs key file with newlines, -e interpolates \n and renders newlines.
+# OpenSSH needs key file with newlines, -e interpolates \n and renders them.
 echo -e "${STORAGE_PRIVATE_KEY}" > "${STORAGE_PRIVATE_KEY_FILE}"
 chmod u+rw,go= "${STORAGE_PRIVATE_KEY_FILE}"
 
