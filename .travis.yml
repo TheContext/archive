@@ -1,5 +1,8 @@
 language: shell
 
+script:
+  - shellcheck ci/scp-release.sh
+
 deploy:
   provider: script
   script: ci/scp-release.sh
