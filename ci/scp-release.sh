@@ -17,6 +17,7 @@ RELEASE_JSON="$(curl \
   --retry 3 \
   --request GET \
   --header "Accept: application/vnd.github.v3+json" \
+  --header "Authorization: token ${GITHUB_TOKEN}" \
   "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/releases/tags/${TRAVIS_TAG}"
 )"
 
